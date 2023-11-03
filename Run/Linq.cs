@@ -182,7 +182,7 @@ namespace JobLinq.Run
         {
             Console.Clear();
             var InventoryValueTotal = ProductList.Sum(p => p.Amount * p.UnitPrice);
-            Console.WriteLine($"6.Value Total: {InventoryValueTotal:C}");
+            Console.WriteLine($"6.Value Total of Inventary: {InventoryValueTotal:C}");
         }
     }
 }
