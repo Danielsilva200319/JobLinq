@@ -49,8 +49,8 @@ namespace JobLinq.Run
                 Console.WriteLine("|   HARDWARE INVENTORY   |");
                 Console.WriteLine("+------------------------+");
                 Console.WriteLine("|    1.Inventary         |");
-                Console.WriteLine("|    2.Buy               |");
-                Console.WriteLine("|    3.Sold out          |");
+                Console.WriteLine("|    2.Sold out          |");
+                Console.WriteLine("|    3.Buy               |");
                 Console.WriteLine("|    4.TotalBills        |");
                 Console.WriteLine("|    5.List Sold         |");
                 Console.WriteLine("|    6.Total value       |");
