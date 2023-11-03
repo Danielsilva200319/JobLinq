@@ -66,12 +66,12 @@ namespace JobLinq.Run
                         Console.ReadLine();
                         break;
                     case 2:
-                        Buy();
+                        SoldOut();
                         Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
                     case 3:
-                        SoldOut();
+                        Buy();
                         Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
@@ -112,7 +112,7 @@ namespace JobLinq.Run
                 Console.WriteLine($"\tId: {item.Id}, Name: {item.Name}, Amount: {item.Amount}");
             }
         }
-        /* 3. Sold Out */
+        /* 2. Sold Out */
         public void SoldOut()
         {
             Console.Clear();
@@ -123,7 +123,7 @@ namespace JobLinq.Run
                 Console.WriteLine($"\tId: {tp.Id}, Name: {tp.Name}, Amount: {tp.Amount}");
             }
         }
-        /* 2. Buy */
+        /* 3. Buy */
         public void Buy()
         {
             Console.Clear();
