@@ -44,6 +44,7 @@ namespace JobLinq.Run
             bool isActivate = true;
             while (isActivate)
             {
+                Console.Clear();
                 Console.WriteLine("+------------------------+");
                 Console.WriteLine("|   HARDWARE INVENTORY   |");
                 Console.WriteLine("+------------------------+");
