@@ -139,7 +139,7 @@ namespace JobLinq.Run
         public void TotalBill()
         {
             Console.Clear();
-            Console.Write("Enter the month (e.g., January, February, etc.): ");
+            Console.Write("Enter the month in lower case (e.g., enero, febrero, etc.): ");
             string monthInput = Console.ReadLine();
             DateTimeFormatInfo dtfi = DateTimeFormatInfo.CurrentInfo;
             string[] monthNames = dtfi.MonthNames;
@@ -163,7 +163,7 @@ namespace JobLinq.Run
             }
             else
             {
-                Console.WriteLine("Invalid month input. Please enter a valid month (e.g., January, February, etc.).");
+                Console.WriteLine("Invalid month input. Please enter a valid month (e.g., enero, febrero, etc.).");
             }
         }
 
