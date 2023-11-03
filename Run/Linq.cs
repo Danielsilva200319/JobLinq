@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using JobLinq.Entities;
@@ -27,8 +28,8 @@ namespace JobLinq.Run
         {
             new Bill(){Id = 1, Date = new DateOnly(2023, 11, 2), IdClient = 1, TotalBill = 50.000 },
             new Bill(){Id = 2, Date = new DateOnly(2023, 1, 15), IdClient = 2, TotalBill = 300.000 },
-            new Bill(){Id = 3, Date = new DateOnly(2023, 12, 22), IdClient = 3, TotalBill = 20.000 },
-            new Bill(){Id = 4, Date = new DateOnly(2023, 9, 30), IdClient = 4, TotalBill = 15.000 }
+            new Bill(){Id = 3, Date = new DateOnly(2023, 7, 22), IdClient = 3, TotalBill = 20.000 },
+            new Bill(){Id = 4, Date = new DateOnly(2023, 1, 30), IdClient = 4, TotalBill = 15.000 }
         };
         List<BillDetail> BillDetailList = new List<BillDetail>()
         {
@@ -138,15 +139,55 @@ namespace JobLinq.Run
         public void TotalBill()
         {
             Console.Clear();
+            Console.Write("Enter the month (e.g., January, February, etc.): ");
+            string monthInput = Console.ReadLine();
+            DateTimeFormatInfo dtfi = DateTimeFormatInfo.CurrentInfo;
+            var monthNames = dtfi.MonthNames;
+            int selectedMonth = Array.IndexOf(monthNames, monthInput) + 1;
+
+            if (selectedMonth >= 1 && selectedMonth <= 12)
+            {
+                var billsForSelectedMonth = BillList
+                    .Where(p => p.Date.Year == 2023 && p.Date.Month == selectedMonth)
+                    .ToList();
+
+                Console.Clear();
+                Console.WriteLine($"Total of bills for {monthInput}:");
+                foreach (var item in billsForSelectedMonth)
+                {
+                    Console.WriteLine($"\tId: {item.Id}, Date: {item.Date}, TotalBill: {item.TotalBill:C}");
+                }
+
+                var totalBillForSelectedMonth = billsForSelectedMonth.Sum(p => p.TotalBill);
+                Console.WriteLine($"Total of bills for {monthInput} is: {totalBillForSelectedMonth:C}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid month input. Please enter a valid month (e.g., January, February, etc.).");
+            }
+        }
+
+        /* public void TotalBill()
+        {
+            Console.Clear();
+            Console.Write("Enter the month: ");
+            string months = Console.ReadLine();
+            var list = BillList.ToList();
+            Console.Clear();
+            Console.WriteLine($"4.Total of bill at {months}:");
+            foreach (var item in list)
+            {
+                Console.WriteLine($"\tId: {item.Id}, Date: {item.Date}, TotalBill: {item.TotalBill:C}");
+            }
             var TotalBillJanuary = BillList.Where(p => p.Date.Year == 2023 && p.Date.Month == 1)
             .Sum(p => p.TotalBill);
-            Console.WriteLine($"4.Total of bill at January: {TotalBillJanuary:C}");
-        }
+            Console.WriteLine($"4.Total of bill at {months} is: {TotalBillJanuary:C}");
+        } */
         /* 5. List Sold */
         public void ListProductsSold()
         {
             Console.Clear();
-            Console.Write("Ingrese el Id de la factura: ");
+            Console.Write("Enter the bill Id: ");
             int IdBillConsulted = Int32.Parse(Console.ReadLine());
             var ProductsSold = BillDetailList.Where(f => f.IdBill == IdBillConsulted)
             .Select(f => ProductList.FirstOrDefault(p => p.Id == f.IdProduct)).ToList();
