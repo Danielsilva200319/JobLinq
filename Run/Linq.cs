@@ -8,6 +8,7 @@ namespace JobLinq.Run
 {
     public class Linq
     {
+        /* Listas de las clases */
         List<Product> ProductList = new List<Product>()
         {
             new Product(){Id = 1, Name = "Martillo", UnitPrice = 12.000, Amount = 12, StockMin = 10, StockMax = 160},
@@ -36,6 +37,7 @@ namespace JobLinq.Run
             new BillDetail(){Id = 3, IdBill = 2, IdProduct = 3, Amount = 10, Value = 100.000 },
             new BillDetail(){Id = 4, IdBill = 2, IdProduct = 4, Amount = 8, Value = 30.000 }
         };
+        /* MENU */
         public void Menu()
         {
             bool isActivate = true;
@@ -52,40 +54,48 @@ namespace JobLinq.Run
                 Console.WriteLine("|    5.List Sold         |");
                 Console.WriteLine("|    6.Total value       |");
                 Console.WriteLine("|    0.Salir             |");
-                Console.WriteLine("+-----------------------+");
-                Console.Write("Seleccione una opción: ");
+                Console.WriteLine("+------------------------+");
+                Console.Write("Select an option: ");
                 int opcion = Int32.Parse(Console.ReadLine());
                 switch (opcion)
                 {
                     case 1:
                         list();
+                        Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
                     case 2:
                         Buy();
+                        Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
                     case 3:
                         SoldOut();
+                        Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
                     case 4:
                         TotalBill();
+                        Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
                     case 5:
                         ListProductsSold();
+                        Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
                     case 6:
                         InventoryValue();
+                        Console.Write("Press Enter to Continue... ");
                         Console.ReadLine();
                         break;
                     case 0:
                         isActivate = false;
                         break;
                     default:
-                        Console.WriteLine("Opcion invalida");
+                        Console.WriteLine("Invalid Option");
+                        Console.Write("Press Enter to Continue... ");
+                        Console.ReadLine();
                         break;
                 }
             }
