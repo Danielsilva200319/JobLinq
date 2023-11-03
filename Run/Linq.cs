@@ -44,7 +44,6 @@ namespace JobLinq.Run
             bool isActivate = true;
             while (isActivate)
             {
-                Console.Clear();
                 Console.WriteLine("+------------------------+");
                 Console.WriteLine("|   HARDWARE INVENTORY   |");
                 Console.WriteLine("+------------------------+");
@@ -142,13 +141,13 @@ namespace JobLinq.Run
             Console.Write("Enter the month (e.g., January, February, etc.): ");
             string monthInput = Console.ReadLine();
             DateTimeFormatInfo dtfi = DateTimeFormatInfo.CurrentInfo;
-            var monthNames = dtfi.MonthNames;
-            int selectedMonth = Array.IndexOf(monthNames, monthInput) + 1;
+            string[] monthNames = dtfi.MonthNames;
+            int selectedMonth = Array.IndexOf(monthNames, monthInput);
 
-            if (selectedMonth >= 1 && selectedMonth <= 12)
+            if (selectedMonth != -1)
             {
                 var billsForSelectedMonth = BillList
-                    .Where(p => p.Date.Year == 2023 && p.Date.Month == selectedMonth)
+                    .Where(p => p.Date.Year == 2023 && p.Date.Month == selectedMonth + 1)
                     .ToList();
 
                 Console.Clear();
@@ -166,6 +165,7 @@ namespace JobLinq.Run
                 Console.WriteLine("Invalid month input. Please enter a valid month (e.g., January, February, etc.).");
             }
         }
+
 
         /* public void TotalBill()
         {
