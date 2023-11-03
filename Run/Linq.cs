@@ -144,20 +144,17 @@ namespace JobLinq.Run
             DateTimeFormatInfo dtfi = DateTimeFormatInfo.CurrentInfo;
             string[] monthNames = dtfi.MonthNames;
             int selectedMonth = Array.IndexOf(monthNames, monthInput);
-
             if (selectedMonth != -1)
             {
                 var billsForSelectedMonth = BillList
                     .Where(p => p.Date.Year == 2023 && p.Date.Month == selectedMonth + 1)
                     .ToList();
-
                 Console.Clear();
                 Console.WriteLine($"Total of bills for {monthInput}:");
                 foreach (var item in billsForSelectedMonth)
                 {
                     Console.WriteLine($"\tId: {item.Id}, Date: {item.Date}, TotalBill: {item.TotalBill:C}");
                 }
-
                 var totalBillForSelectedMonth = billsForSelectedMonth.Sum(p => p.TotalBill);
                 Console.WriteLine($"Total of bills for {monthInput} is: {totalBillForSelectedMonth:C}");
             }
@@ -166,24 +163,6 @@ namespace JobLinq.Run
                 Console.WriteLine("Invalid month input. Please enter a valid month (e.g., enero, febrero, etc.).");
             }
         }
-
-
-        /* public void TotalBill()
-        {
-            Console.Clear();
-            Console.Write("Enter the month: ");
-            string months = Console.ReadLine();
-            var list = BillList.ToList();
-            Console.Clear();
-            Console.WriteLine($"4.Total of bill at {months}:");
-            foreach (var item in list)
-            {
-                Console.WriteLine($"\tId: {item.Id}, Date: {item.Date}, TotalBill: {item.TotalBill:C}");
-            }
-            var TotalBillJanuary = BillList.Where(p => p.Date.Year == 2023 && p.Date.Month == 1)
-            .Sum(p => p.TotalBill);
-            Console.WriteLine($"4.Total of bill at {months} is: {TotalBillJanuary:C}");
-        } */
         /* 5. List Sold */
         public void ListProductsSold()
         {
